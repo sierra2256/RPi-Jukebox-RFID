@@ -95,9 +95,9 @@ foreach($audiofolders_abs as $audiofolder){
     /*
     * get the relative path as value, set the absolute path as key
     */
-    $relpath = substr($audiofolder, strlen($Audio_Folders_Path) + 1, strlen($audiofolder));
+    $relpath = substr($audiofolder, strlen($Audio_Folders_Path) , strlen($audiofolder));
     if($relpath != "") {
-        $audiofolders[$audiofolder] = substr($audiofolder, strlen($Audio_Folders_Path) + 1, strlen($audiofolder));
+        $audiofolders[$audiofolder] = substr($audiofolder, strlen($Audio_Folders_Path), strlen($audiofolder));
     }
 }
 

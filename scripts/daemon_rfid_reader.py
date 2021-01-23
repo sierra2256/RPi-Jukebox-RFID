@@ -5,7 +5,9 @@ import os
 import subprocess
 import time
 import re
+import RPi
 
+from userscripts.buzzer import Buzzer
 from Reader import Reader
 
 logger = logging.getLogger()
@@ -15,6 +17,7 @@ ch.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
 logger.addHandler(ch)
+buz = Buzzer(15) ##BoardPin
 
 reader = Reader()
 
@@ -72,6 +75,7 @@ while True:
         if cardid is not None:
             if cardid != previous_id or (time.time() - previous_time) >= float(same_id_delay) or cardid in str(ids):
                 logger.info('Trigger Play Cardid={cardid}'.format(cardid=cardid))
+                buz.beep(0.01)
                 subprocess.call([dir_path + '/rfid_trigger_play.sh --cardid=' + cardid], shell=True)
                 previous_id = cardid
 

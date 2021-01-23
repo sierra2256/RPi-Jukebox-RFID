@@ -47,3 +47,4 @@ composer.phar
 # composer.lock
 
 # End of https://www.gitignore.io/api/composer
+settings/gpio_settings.ini
